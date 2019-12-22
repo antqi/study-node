@@ -1,0 +1,13 @@
+{
+  "name": "xstudy-node",
+  "version": "1.0.0",
+  "description": "xstudy for nodejs",
+  "main": "index.js",
+  "repository": "https://github.com/antqi/study-node.git",
+  "author": "ant_qi <ant_qi@yeah.net>",
+  "license": "MIT",
+  "dependencies": {
+    "download-git-repo": "^3.0.2",
+    "ora": "^4.0.3"
+  }
+}
