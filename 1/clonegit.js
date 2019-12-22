@@ -1,13 +1,20 @@
-const download = require('download-git-repo')
-const ora = require('ora')
+const { promisify } = require('util')
+
 const repo = {
   source: 'github:vuejs/vue',
   target: 'test'
 }
-const process = ora(`${repo.source} download......`)
+clone(repo)
 
-process.start()
-
-download(repo.source, repo.target, err => {
-  err ? process.fail() : process.succeed()
-})
+async function clone(repo) {
+  const download = promisify(require('download-git-repo'))
+  const ora = require('ora')
+  const process = ora(`${repo.source} downloading......`)
+  process.start()
+  try {
+    await download(repo.source, repo.target)
+    process.succeed()
+  } catch (error) {
+    process.fail()
+  }
+}
